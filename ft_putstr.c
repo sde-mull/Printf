@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/06 18:39:22 by sde-mull          #+#    #+#             */
-/*   Updated: 2021/12/07 16:44:29 by sde-mull         ###   ########.fr       */
+/*   Created: 2021/12/07 16:23:09 by sde-mull          #+#    #+#             */
+/*   Updated: 2021/12/07 16:24:22 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_prinf.h"
+#include "ft_print.h"
 
-void	ft_putchar(char c)
+void	ft_putstr(char *s)
 {
-	write(1, &c, 1);
+	int	index;
+
+	index = 0;
+	if (s == 0)
+		return ;
+	while (s[index] != '\0')
+	{
+		ft_putchar(s[index]);
+		index++;
+	}
 }
