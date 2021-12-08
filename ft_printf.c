@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 16:54:09 by sde-mull          #+#    #+#             */
-/*   Updated: 2021/12/07 16:42:33 by sde-mull         ###   ########.fr       */
+/*   Updated: 2021/12/08 19:48:05 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[index] == '%')
 			ft_format_char(format, index, args, counter);
-		counter = counter + ft_putchar(format[index]);
+		else
+			counter = counter + ft_putchar(format[index]);
 		index++;
 	}
 	va_end(args);
