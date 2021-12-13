@@ -3,34 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 16:54:09 by sde-mull          #+#    #+#             */
-/*   Updated: 2021/12/08 19:48:05 by marvin           ###   ########.fr       */
+/*   Updated: 2021/12/13 19:31:59 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdarg.h>
 
 int	ft_format_char(char *format, int index, va_list args, int counter)
 {
 	index++;
-	if (format[index] == c)
+	if (format[index] == 'c')
 		counter = counter + ft_putchar(va_arg(args, char));
-	else if (format[index] == s)
+	else if (format[index] == 's')
 		counter = counter + ft_putstr(va_arg(args, char *));
-	else if (format[index] == p)
+	else if (format[index] == 'p')
 		counter = counter + ft_put_hex_nbr(va_arg(args, unsigned int));
-	else if (format[index] == d)
+	else if (format[index] == 'd')
 		counter = counter + ft_putnbr(va_arg(args, int));
-	else if (format[index] == i)
+	else if (format[index] == 'i')
 		counter = counter + ft_putnbr(va_arg(args, int));
-	else if (format[index] == u)
+	else if (format[index] == 'u')
 		counter = counter + ft_putnbr(va_arg(args, unsigned int));
-	else if (format[index] == x)
+	else if (format[index] == 'x')
 		counter = counter + ft_put_hex_nbr(va_arg(args, unsigned int));
-	else if (format[index] == X)
+	else if (format[index] == 'X')
 		counter = counter + ft_put_hex_nbr(va_arg(args, unsigned int));
 	else if (format[index] == '%')
 		counter = counter + ft_putchar('%');
@@ -48,14 +47,20 @@ int	ft_printf(const char *format, ...)
 	va_start(args, format);
 	if (format == 0)
 		return (NULL);
-	while (format[index] != '\0')
+	while (*format != '\0')
 	{
-		if (format[index] == '%')
-			ft_format_char(format, index, args, counter);
+		if (*format == '%')
+			ft_format_char(*format, index, args, counter);
 		else
-			counter = counter + ft_putchar(format[index]);
-		index++;
+			counter = counter + ft_putchar(*format);
+		format++;
 	}
 	va_end(args);
 	return (counter);
+}
+
+int main()
+{
+	ft_printf("hello how are you");
+	return 0;
 }
