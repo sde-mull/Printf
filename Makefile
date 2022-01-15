@@ -1,30 +1,40 @@
-CC		= gcc
-CFLAGS	= - Wall -Wextra -Werror
-PRINT1	= ar -rcs
-PRINT2 	= ranlib
-RM		= /bin/rm -f
+CC=			gcc
+NAME=		libftprintf.a
+RM=			rm -f
+CD=			cd
 
-NAME	= ft_printf.a
+CFLAGS=		\
+			-Wall\
+			-Werror\
+			-Wextra\
 
-INCLUDE	= ft_printf.h
-SRCS	= ft_printf.c ft_printf_utils.c
-OBJS	= $(SRCS:.c=.o)
+SRC_DIR=	src
+LFT_DIR=	libft
 
-all:		$(NAME)
+SRCS=		$(shell find $(SRC_DIR) -maxdepth 1 -type f -name "*.c")
+OBJS=		$(patsubst $(SRC_DIR)/%.c,$(SRC_DIR)/%.o,$(SRCS))
 
-$(NAME):	$(OBJS)   $(INCLUDE)
-			$(PRINT1) $(NAME) $(OBJS)
-			$(PRINT2) $(NAME)
+all: $(NAME)
 
-.c.o:
-			$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $(,:.c=.o)
+$(NAME): libft $(OBJS)
+
+$(SRC_DIR)/%.o: $(SRC_DIR)/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(NAME): libft $(OBJS)
+	cp $(LFT_DIR)/libft.a ./libftprintf.a
+	ar rcs $@ $(OBJS)
+
+libft:
+	$(MAKE) all -C ./libft
 
 clean:
-			$(RM) $(OBJS)
+	$(RM) $(OBJS)
 
-fclean:		clean
-			$(RM) $(NAME)
+fclean: clean
+	$(CD) $(LFT_DIR) && make -i fclean
+	$(RM) $(NAME)
 
-re:			fclean all
+re: fclean all
 
-.PHONY:		all clean fclean re
+.PHONY: all libft clean fclean re
