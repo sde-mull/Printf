@@ -16,7 +16,7 @@
 # include <limits.h>
 # include <unistd.h>
 
-int ft_putchar(char c);
+int	ft_putchar(char c);
 int	ft_putnbr(int n, int base, char format);
 int	ft_putnbr_u(unsigned int n, unsigned int base);
 int	ft_putstr(char *s);

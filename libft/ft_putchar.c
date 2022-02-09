@@ -12,10 +12,10 @@
 
 #include "libft.h"
 
-int ft_putchar(char c)
+int	ft_putchar(char c)
 {
-    int count;
+	int	count;
 
-    count = write(1, &c, 1);
-    return(count);
+	count = write(1, &c, 1);
+	return (count);
 }

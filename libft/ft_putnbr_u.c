@@ -14,11 +14,11 @@
 
 int	ft_putnbr_u(unsigned int n, unsigned int base)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (n >= base)
-    	count += ft_putnbr_u(n / base, base);
+		count += ft_putnbr_u(n / base, base);
 	count += ft_putchar((n % base) + '0');
-	return(count);
+	return (count);
 }

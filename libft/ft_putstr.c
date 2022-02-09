@@ -14,12 +14,12 @@
 
 int	ft_putstr(char *s)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (s == 0)
 	{
-		count = write(1,"(null)", 6);
+		count = write(1, "(null)", 6);
 		return (count);
 	}
 	while (*s != '\0')
@@ -27,5 +27,5 @@ int	ft_putstr(char *s)
 		count += write(1, s, 1);
 		s++;
 	}
-	return(count);
+	return (count);
 }

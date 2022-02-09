@@ -14,7 +14,7 @@
 
 char	*ft_base1(char format, int base)
 {
-	char *str;
+	char	*str;
 
 	if ((base == 10) && ((format == 'd') || (format == 'i')))
 		str = "0123456789";
@@ -23,7 +23,7 @@ char	*ft_base1(char format, int base)
 	else if ((format == 'X') && (base == 16))
 		str = "0123456789ABCDEF";
 	else
-		return(NULL);
+		return (NULL);
 	return (str);
 }
 
@@ -37,5 +37,5 @@ int	ft_putnbr_p(unsigned long n, unsigned long base, char format)
 	if (n >= base)
 		count += ft_putnbr_p(n / base, base, format);
 	count += ft_putchar(str[n % base]);
-	return(count);
+	return (count);
 }
