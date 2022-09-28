@@ -2,29 +2,33 @@ NAME=		libft.a
 RM=			rm -f
 
 CC=			gcc
-CFLAGS=		\
-			-Wall\
+CFLAGS=		-Wall\
 			-Werror\
 			-Wextra\
 
+GREEN = 	\033[0;32m
+YELLOW = 	\033[0;33m
+RED = 		\033[0;31m
+RESET = 	\033[0m
+
 SRCS=		$(shell find . -maxdepth 1 -type f -name "*.c")
-OBJS=		$(patsubst %.c,%.o,$(SRCS))
+OBJS=		$(SRCS:.c=.o)
 
 all: $(NAME) clean
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
 $(NAME): $(OBJS)
-	ar rcs $@ $^
+	@ar rcs $@ $^
+	@echo "$(GREEN)[Libft functions Compiled!] $(RESET)"
 
-bonus: all
+%.o: %.c
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS)
+	@$(RM) $(OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
+	@echo "$(RED)[libft.a cleaned!] $(RESET)"
 
 re: fclean all
 
