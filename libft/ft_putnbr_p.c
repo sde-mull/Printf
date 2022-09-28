@@ -12,6 +12,7 @@
 
 #include "libft.h"
 
+
 char	*ft_base1(char format, int base)
 {
 	char	*str;
