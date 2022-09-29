@@ -11,6 +11,12 @@
 Variadic funtions are an amazing tool and i learned how to use them with these project. This project is very straigt forward and an excelent exercise to improve your programming skills.
 </p>
 
+<h4>Prototype</h4>
+
+```bash
+int	ft_printf(const char *format, ...)
+```
+
 <h2>How to use it</h2>
 <h4>Clone the repository</h4>
 
