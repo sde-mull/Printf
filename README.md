@@ -37,3 +37,6 @@ in your file.c
 then compile with
 gcc file.c printf(libftprint.a
 ```
+
+<h2>Grade:</h2>
+<img width="1033" alt="image" src="https://user-images.githubusercontent.com/78042197/193057716-194791c6-fd5a-4193-be3b-91001eef8759.png">
